@@ -1,0 +1,1 @@
+import{L as KD,et as Rc,i as Ac,r as AI}from"./chunk-DVzSxzLH.js";var s=class t{static ɵfac=function(e){return new(e||t)};static ɵcmp=AI({type:t,selectors:[[`app-all-orders`]],decls:2,vars:0,template:function(e,i){e&1&&(Ac(0,`p`),KD(1,`all-orders works!`),Rc())},encapsulation:2})};export{s as AllOrders};

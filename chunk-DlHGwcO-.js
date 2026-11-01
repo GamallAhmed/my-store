@@ -1,0 +1,1 @@
+import{L as KD,et as Rc,i as Ac,r as AI}from"./chunk-DVzSxzLH.js";var i=class t{static ɵfac=function(n){return new(n||t)};static ɵcmp=AI({type:t,selectors:[[`app-not-found`]],decls:2,vars:0,template:function(n,d){n&1&&(Ac(0,`p`),KD(1,`not-found works!`),Rc())},encapsulation:2})};export{i as NotFound};
