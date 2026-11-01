@@ -1,0 +1,98 @@
+<div class="max-w-3xl mx-auto px-4 py-12">
+  <div class="bg-white border border-gray-300 rounded-4xl shadow-sm sm:p-10">
+    <!-- Titles -->
+    <div class="flex items-center gap-3 mb-8 border-b border-gray-200 pb-5">
+      <div
+        class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shadow-inner"
+      >
+        <i class="fa-solid fa-credit-card text-xl"></i>
+      </div>
+      <div>
+        <h1 class="text-xl sm:text-2xl font-extrabold text-gray-900">Shipping & Checkout</h1>
+        <p class="text-xs sm:text-sm text-gray-500 mt-0.5">
+          Please fill in your delivery details to complete the order.
+        </p>
+      </div>
+    </div>
+    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm( )" class="space-y-">
+      <div class="space-y-2">
+        <label for="details" class="block text-xs font-bold uppercase tracking-wider text-gray-700">
+          Delivery Address (Details)
+        </label>
+        <div class="relative">
+          <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400">
+            <i class="fa-solid fa-location-dot"></i>
+          </span>
+          <input
+            type="text"
+            id="details"
+            formControlName="details"
+            placeholder="e.g. 123 Street, Building 4, Floor 2"
+            class="w-full pr-11 pl-4 py-3.5 bg-gray-50 border border-gray-300 rounded-xl text-sm text-gray-900 focus:bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all"
+          />
+        </div>
+        <!-- رسائل الخطأ -->
+        @if (checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched) {
+          <p class="text-xs text-red-500 font-medium">Address details are required.</p>
+        }
+      </div>
+      <!-- حقل رقم الهاتف (Phone) -->
+      <div class="space-y-2">
+        <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-gray-700">
+          Phone Number
+        </label>
+        <div class="relative">
+          <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400">
+            <i class="fa-solid fa-phone"></i>
+          </span>
+          <input
+            type="tel"
+            id="phone"
+            formControlName="phone"
+            placeholder="e.g. 01012345678"
+            class="w-full pr-11 pl-4 py-3.5 bg-gray-50 border border-gray-300 rounded-xl text-sm text-gray-900 focus:bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all"
+          />
+        </div>
+        <!-- رسائل الخطأ -->
+        @if (checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched) {
+          <p class="text-xs text-red-500 font-medium">
+            Please enter a valid Egyptian phone number (e.g. 010, 011, 012, 015).
+          </p>
+        }
+      </div>
+
+      <!-- حقل المدينة (City) -->
+      <div class="space-y-2">
+        <label for="city" class="block text-xs font-bold uppercase tracking-wider text-gray-700">
+          City
+        </label>
+        <div class="relative">
+          <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400">
+            <i class="fa-solid fa-city"></i>
+          </span>
+          <input
+            type="text"
+            id="city"
+            formControlName="city"
+            placeholder="e.g. Cairo, Giza, Alexandria"
+            class="w-full pr-11 pl-4 py-3.5 bg-gray-50 border border-gray-300 rounded-xl text-sm text-gray-900 focus:bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all"
+          />
+        </div>
+        <!-- رسائل الخطأ -->
+        @if (checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched) {
+          <p class="text-xs text-red-500 font-medium">City name is required.</p>
+        }
+      </div>
+
+      <!-- زر اتمام الدفع (Submit Button) -->
+      <button
+        type="submit"
+        [disabled]="checkOutForm.invalid"
+        class="w-full mt-4 py-4 bg-amber-500 hover:bg-amber-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-gray-900 font-extrabold rounded-xl shadow-md text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
+      >
+        <i class="fa-solid fa-lock text-xs"></i>
+        Proceed to Payment
+      </button>
+    </form>
+  </div>
+</div>

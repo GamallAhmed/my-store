@@ -1,0 +1,199 @@
+<footer class="bg-amazon-dark-light text-[#DDD] mt-10">
+  <!-- Back to Top -->
+  <button
+    (click)="scrollToTop()"
+    class="w-full bg-[#37475A] hover:bg-[#485769] text-white text-center py-3.5 text-[13px] transition-colors"
+  >
+    Back to top
+  </button>
+
+  <!-- Main Links -->
+  <div class="py-10">
+    <div class="max-w-250 mx-auto px-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Column 1 -->
+      <div>
+        <h3 class="text-white font-bold text-base mb-3.5">Get to Know Us</h3>
+        <ul class="space-y-2.5">
+          <li>
+            <a href="#" class="text-[#DDD] text-sm  hover:text-orange-500  hover:underline transition-colors">About Us</a>
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500">Careers</a>
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500"
+              >Press Releases</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500"
+              >Amazon Science</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 2 -->
+      <div>
+        <h3 class="text-white font-bold text-base mb-3.5">Connect with Us</h3>
+        <ul class="space-y-2.5">
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500">Facebook</a>
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500">Twitter</a>
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500">Instagram</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div>
+        <h3 class="text-white font-bold text-base mb-3.5">Make Money with Us</h3>
+        <ul class="space-y-2.5">
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500"
+              >Sell on Amazon</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500"
+              >Sell under Amazon Accelerator</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500"
+              >Protect and Build Your Brand</a
+            >
+          </li>
+         
+        </ul>
+      </div>
+
+      <!-- Column 4 -->
+      <div>
+        <h3 class="text-white font-bold text-base mb-3.5">Let Us Help You</h3>
+        <ul class="space-y-2.5">
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500"
+              >Your Account</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500"
+              >Returns Centre</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-[#DDD] text-sm hover:underline hover:text-orange-500"
+              >Recalls and Product Safety Alerts</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="border-t border-[#3a4553]"></div>
+
+  <!-- Bottom Section -->
+  <div class="py-8 px-5 text-center">
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-5 mb-6">
+      <!-- Logo -->
+      <a
+        routerLink="/home"
+        class="text-white text-2xl font-bold tracking-tight hover:text-amazon-orange transition-colors"
+      >
+        myAmozon
+      </a>
+
+      <!-- Language & Country -->
+      <div class="flex gap-2.5">
+        <button
+          class="flex items-center gap-1.5 border border-[#848688] text-[#CCC] px-3 py-1.5 rounded-sm text-[13px] hover:border-white hover:text-orange-500 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+            />
+          </svg>
+          English
+        </button>
+
+        <button
+          class="flex items-center gap-1.5 border border-[#848688] text-[#CCC] px-3 py-1.5 rounded-sm text-[13px] hover:border-white hover:text-orange-500 transition-colors"
+        >
+          <span>🇪🇬</span>
+          Egypt
+        </button>
+      </div>
+    </div>
+    <!-- Payment Methods -->
+<div class="flex justify-center items-center gap-3 mb-6 flex-wrap">
+  <!-- Visa -->
+  <div class="bg-white rounded px-2 py-1.5 flex items-center">
+    <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="38" height="24" rx="3" fill="white"/>
+      <path d="M15.2 16.5H12.8L14.5 7.5H16.9L15.2 16.5Z" fill="#1A1F71"/>
+      <path d="M22.8 7.7C22.3 7.5 21.5 7.3 20.5 7.3C18.2 7.3 16.6 8.5 16.6 10.2C16.6 11.5 17.8 12.2 18.7 12.6C19.6 13.1 20 13.4 20 13.8C20 14.4 19.3 14.7 18.6 14.7C17.6 14.7 17.1 14.5 16.3 14.2L15.9 14L15.5 16.3C16.2 16.6 17.3 16.9 18.5 16.9C21 16.9 22.5 15.7 22.5 13.9C22.5 12.8 21.8 12 20.6 11.4C19.8 11 19.2 10.7 19.2 10.3C19.2 9.9 19.6 9.5 20.5 9.5C21.3 9.5 21.8 9.7 22.2 9.8L22.5 10L22.8 7.7Z" fill="#1A1F71"/>
+      <path d="M26.5 7.5H24.5C24 7.5 23.6 7.7 23.4 8.2L19.8 16.5H22.4L22.9 15H26L26.3 16.5H28.5L26.5 7.5ZM23.7 13.1L25 9.5L25.7 13.1H23.7Z" fill="#1A1F71"/>
+      <path d="M11.5 7.5L9.1 13.8L8.8 12.5C8.3 11.1 7 9.7 5.5 9L7.7 16.5H10.4L14.5 7.5H11.5Z" fill="#1A1F71"/>
+      <path d="M7.2 7.5H3.2L3 7.8C6 8.5 8 10.3 8.8 12.5L7.9 8.2C7.7 7.7 7.4 7.5 7.2 7.5Z" fill="#F9A02B"/>
+    </svg>
+  </div>
+
+  <!-- Mastercard -->
+  <div class="bg-white rounded px-2 py-1.5 flex items-center">
+    <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="38" height="24" rx="3" fill="white"/>
+      <circle cx="15" cy="12" r="7" fill="#EB001B"/>
+      <circle cx="23" cy="12" r="7" fill="#F79E1B"/>
+      <path d="M19 7.2C20.5 8.4 21.5 10.1 21.5 12C21.5 13.9 20.5 15.6 19 16.8C17.5 15.6 16.5 13.9 16.5 12C16.5 10.1 17.5 8.4 19 7.2Z" fill="#FF5F00"/>
+    </svg>
+  </div>
+
+  <!-- American Express -->
+  <div class="bg-white rounded px-2 py-1.5 flex items-center">
+    <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="38" height="24" rx="3" fill="#016FD0"/>
+      <path d="M11.5 10.2H9.8L8.9 12.3L8 10.2H6.3L7.9 13.8H9.1L11.5 10.2Z" fill="white"/>
+      <path d="M14.5 10.2H12.8V13.8H14.5C15.5 13.8 16.2 13.3 16.2 12C16.2 10.7 15.5 10.2 14.5 10.2ZM14.3 12.7H13.7V11.3H14.3C14.8 11.3 15.1 11.5 15.1 12C15.1 12.5 14.8 12.7 14.3 12.7Z" fill="white"/>
+      <path d="M20.5 11.3H18.8V10.2H22.3V11.1L19.8 13.8H18.3L20.5 11.3Z" fill="white"/>
+      <path d="M23.5 10.2V13.8H25.1V12.5H26.5C27.6 12.5 28.3 11.9 28.3 10.9C28.3 9.9 27.6 10.2 26.5 10.2H23.5ZM26.3 11.5H25.1V11.2H26.3C26.7 11.2 26.9 11.3 26.9 11.35C26.9 11.4 26.7 11.5 26.3 11.5Z" fill="white"/>
+      <path d="M5.5 15.5H32.5V16.5H5.5V15.5Z" fill="white"/>
+    </svg>
+  </div>
+
+  <!-- PayPal -->
+  <div class="bg-white rounded px-2 py-1.5 flex items-center">
+    <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="38" height="24" rx="3" fill="white"/>
+      <path d="M15.5 7.5H12.2C11.9 7.5 11.6 7.7 11.5 8L9.5 16.5H11.8L12.3 14.2H14.5C16.8 14.2 18.3 12.9 18.7 10.7C19.1 8.7 17.8 7.5 15.5 7.5ZM14.8 10.9C14.6 12 13.9 12.5 12.9 12.5H12.1L12.6 9.3H13.5C14.5 9.3 15 9.7 14.8 10.9Z" fill="#003087"/>
+      <path d="M22.5 7.5H19.2C18.9 7.5 18.6 7.7 18.5 8L16.5 16.5H18.7L19.3 13.8H20.5L20.1 16.5H22.3L24.3 8C24.4 7.7 24.2 7.5 23.9 7.5H22.5ZM20.8 12.2H19.7L20.2 9.5H20.8C21.5 9.5 21.8 9.8 21.6 10.5C21.5 11.1 21.2 12.2 20.8 12.2Z" fill="#003087"/>
+      <path d="M27.5 9.5H25.8L25.3 12.5C25.2 12.8 25.4 13 25.6 13H26.5C28.2 13 29.3 12 29.6 10.3C29.9 8.7 28.9 7.5 27.2 7.5H24.5C24.2 7.5 23.9 7.7 23.8 8L21.8 16.5H24L24.5 14H25.8L26.3 16.5H28.5L30.5 8C30.6 7.7 30.4 7.5 30.1 7.5H27.5V9.5Z" fill="#009CDE"/>
+    </svg>
+  </div>
+</div>
+    <!-- Copyright -->
+    <div class="text-xs text-[#DDD]">
+      <p class="mb-2">© 2026 myAmozon. All rights reserved.</p>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="#" class="hover:underline hover:text-orange-500">Conditions of Use</a>
+        <a href="#" class="hover:underline hover:text-orange-500">Privacy Notice</a>
+        <a href="#" class="hover:underline hover:text-orange-500">Interest-Based Ads</a>
+      </div>
+    </div>
+  </div>
+</footer>

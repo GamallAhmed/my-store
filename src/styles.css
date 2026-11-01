@@ -1,3 +1,146 @@
-/* You can add global styles to this file, and also import other style files */
 
-@import 'tailwindcss';
+
+
+@import "tailwindcss";
+
+
+@theme {
+  --color-amazon-orange: #FF9900;
+  --color-amazon-orange-hover: #E47911;
+  --color-amazon-orange-dark: #C45500;
+  --color-amazon-yellow: #FEBD69;
+  --color-amazon-dark: #131921;
+  --color-amazon-dark-light: #232F3E;
+  --color-amazon-gray: #EAEDED;
+  --color-amazon-gray-light: #F7F8F8;
+  --color-amazon-gray-border: #D5D9D9;
+  --color-amazon-text: #0F1111;
+  --color-amazon-text-secondary: #565959;
+  --color-amazon-link: #007185;
+  --color-amazon-link-hover: #C45500;
+  --color-amazon-success: #067D62;
+  --color-amazon-error: #B12704;
+
+  --font-sans: Arial, sans-serif;
+  --radius-amazon: 8px;
+  --radius-amazon-sm: 4px;
+}
+
+/* ========== Base Styles ========== */
+html {
+  font-family: Arial, sans-serif;
+  color: #0F1111;
+  scroll-behavior: smooth;
+  
+}
+
+body {
+  background-color: white;
+  color: var(--color-amazon-text);
+  font-family: "Merriweather", serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base Buttons & Cards */
+.btn-amazon {
+  background-color: var(--color-amazon-yellow);
+  color: var(--color-amazon-text);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-amazon-sm);
+  border: 1px solid var(--color-amazon-gray-border);
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  transition: background-color 0.15s;
+}
+
+.btn-amazon:hover {
+  background-color: var(--color-amazon-orange);
+}
+
+.btn-amazon-primary {
+  background-color: var(--color-amazon-orange);
+  color: white;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-amazon-sm);
+  border: 1px solid var(--color-amazon-orange-dark);
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  transition: background-color 0.15s;
+}
+
+.btn-amazon-primary:hover {
+  background-color: var(--color-amazon-orange-hover);
+}
+
+.product-card {
+  background-color: white;
+  border: 1px solid var(--color-amazon-gray-border);
+  border-radius: var(--radius-amazon);
+  padding: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 8px rgba(213, 217, 217, 0.5);
+}
+/* حاوية الـ Toast في الأعلى */
+.toast-container {
+  font-family: inherit !important;
+  padding: 16px !important;
+}
+
+/* الشكل العصري العائم (Glassmorphism & Clean Style) */
+.toast-container .ngx-toastr {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  color: #111827 !important;
+  border-radius: 1rem !important; /* rounded-2xl */
+  padding: 16px 20px 16px 50px !important; /* مساحة للأيقونة */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(229, 231, 235, 0.8) !important;
+  background-repeat: no-repeat !important;
+  background-position: 18px center !important;
+  background-size: 22px !important;
+}
+
+/* تنسيق العنوان */
+.toast-container .toast-title {
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+  letter-spacing: 0.3px;
+}
+
+/* تنسيق الرسالة */
+.toast-container .toast-message {
+  font-size: 12px !important;
+  color: #4b5563 !important;
+  line-height: 1.4 !important;
+}
+
+/* 1. نجاح (Success) - أيقونة وخلفية خضراء هادئة للأيقونة */
+.ngx-toastr.toast-success {
+  border-left: 4px solid #10b981 !important;
+}
+.ngx-toastr.toast-success .toast-title {
+  color: #047857 !important;
+}
+
+/* 2. خطأ (Error) - إطار أحمر خفيف */
+.ngx-toastr.toast-error {
+  border-left: 4px solid #ef4444 !important;
+}
+.ngx-toastr.toast-error .toast-title {
+  color: #b91c1c !important;
+}
+
+/* شريط التقدم العصري فوق الـ Toast */
+.toast-progress {
+  background: linear-gradient(to right, #f59e0b, #d97706) !important;
+  height: 3px !important;
+  border-radius: 9999px !important;
+}

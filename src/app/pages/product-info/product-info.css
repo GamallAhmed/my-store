@@ -1,0 +1,21 @@
+/* تخصيص ألوان أسهم سويبر ونقاط التنقل لتكون أنيقة */
+swiper-container {
+  --swiper-theme-color: #f59e0b; /* لون أصفر/برتقالي متناسق مع Tailwind Amber */
+  --swiper-navigation-size: 24px;
+}
+
+swiper-container::part(button-prev),
+swiper-container::part(button-next) {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #1f2937;
+  transition: all 0.3s ease;
+}
+
+swiper-container::part(button-prev):hover,
+swiper-container::part(button-next):hover {
+  background-color: #ffffff;
+  transform: scale(1.1);
+}

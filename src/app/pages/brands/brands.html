@@ -1,0 +1,53 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <span class="px-3 py-1 bg-amber-50 text-amber-600 rounded-full text-xs font-extrabold uppercase tracking-widest inline-block mb-3">
+      World-Class Partners
+    </span>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+      Explore Popular Brands
+    </h1>
+    <p class="text-sm text-gray-500 mt-2">
+      Discover your favorite brands and shop top-quality products from trusted names worldwide.
+    </p>
+  </div>
+
+
+  @if (brands && brands.length > 0) {
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+      
+      @for (brand of brands; track brand._id) {
+        <div class="group bg-white border border-gray-200/80 rounded-2xl p-5 text-center shadow-sm hover:shadow-xl hover:border-amber-500/50 transition-all duration-300 flex flex-col items-center justify-between cursor-pointer hover:-translate-y-1.5">
+          
+          <!-- صورة الماركة -->
+          <div class="w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center p-2 mb-4 overflow-hidden rounded-xl bg-gray-50/50 group-hover:bg-amber-50/30 transition-colors">
+            <img 
+              [src]="brand.image" 
+              [alt]="brand.name" 
+              class="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+            >
+          </div>
+
+          <div class="w-full border-t border-gray-100 pt-3">
+            <h3 class="text-sm sm:text-base font-bold text-gray-800 group-hover:text-amber-600 transition-colors truncate">
+              {{ brand.name }}
+            </h3>
+          </div>
+
+        </div>
+      }
+
+    </div>
+  } @else {
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+      @for (item of [1,2,3,4,5,6,7,8,9,10]; track item) {
+        <div class="bg-white border border-gray-100 rounded-2xl p-5 h-44 animate-pulse flex flex-col items-center justify-between">
+          <div class="w-24 h-24 bg-gray-100 rounded-xl"></div>
+          <div class="w-3/4 h-4 bg-gray-100 rounded-md"></div>
+        </div>
+      }
+    </div>
+  }
+
+</div>

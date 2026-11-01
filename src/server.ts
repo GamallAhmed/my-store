@@ -12,17 +12,22 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+// Chrome DevTools probes this URL on localhost. Without a handler, Express
+// returns 404 with CSP default-src 'none', which shows up as a console error.
+app.get('/.well-known/appspecific/com.chrome.devtools.json', (req, res) => {
+  const host = req.hostname;
+  if (host !== 'localhost' && host !== '127.0.0.1') {
+    res.status(404).end();
+    return;
+  }
+
+  res.json({
+    workspace: {
+      root: process.cwd(),
+      uuid: '7c3e1a8b-4d2f-4e91-9c6a-2f8b1d4e5a70',
+    },
+  });
+});
 
 /**
  * Serve static files from /browser

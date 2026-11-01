@@ -1,0 +1,249 @@
+<div class="min-h-screen flex items-center justify-center py-12 px-4 bg-amazon-gray-light">
+  <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-md border border-amazon-gray-border">
+    <!-- Header -->
+    <div class="mb-6 text-center sm:text-left">
+      <h2 class="text-2xl font-bold text-amazon-text">Create an account</h2>
+      <p class="text-sm text-amazon-text-secondary mt-1">Please fill in your information below.</p>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="space-y-4">
+      <!-- Name -->
+      <div>
+        <label class="block text-xs font-semibold text-amazon-text mb-1.5">Full Name</label>
+        <div class="relative">
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-amazon-text-secondary pointer-events-none"
+          >
+            <i class="fa-solid fa-user text-xs"></i>
+          </span>
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Enter your name"
+            [ngClass]="{
+              'border-red-600 focus:ring-red-500/20':
+                registerForm.get('name')?.errors && registerForm.get('name')?.touched,
+            }"
+            class="w-full pl-10 pr-4 py-2.5 bg-white border border-amazon-gray-border rounded-xl text-amazon-text placeholder-gray-400 text-sm focus:outline-none focus:border-amazon-orange focus:ring-2 focus:ring-amazon-orange/20 transition-all duration-200"
+          />
+        </div>
+
+        <!-- Name Error Messages (@if) -->
+        @if (registerForm.get('name')?.errors && registerForm.get('name')?.touched) {
+          <div class="mt-1.5 text-xs text-[#B12704] space-y-0.5">
+            @if (registerForm.get('name')?.getError('required')) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Name is required.</p>
+            }
+            @if (registerForm.get('name')?.getError('minlength')) {
+              <p>
+                <i class="fa-solid fa-circle-exclamation mr-1"></i> Name must be at least 3
+                characters.
+              </p>
+            }
+            @if (registerForm.get('name')?.getError('maxlength')) {
+              <p>
+                <i class="fa-solid fa-circle-exclamation mr-1"></i> Name cannot exceed 20
+                characters.
+              </p>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-xs font-semibold text-amazon-text mb-1.5">Email Address</label>
+        <div class="relative">
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-amazon-text-secondary pointer-events-none"
+          >
+            <i class="fa-solid fa-envelope text-xs"></i>
+          </span>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+            [ngClass]="{
+              'border-red-600 focus:ring-red-500/20':
+                registerForm.get('email')?.errors && registerForm.get('email')?.touched,
+            }"
+            class="w-full pl-10 pr-4 py-2.5 bg-white border border-amazon-gray-border rounded-xl text-amazon-text placeholder-gray-400 text-sm focus:outline-none focus:border-amazon-orange focus:ring-2 focus:ring-amazon-orange/20 transition-all duration-200"
+          />
+        </div>
+
+        <!-- Email Error Messages (@if) -->
+        @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
+          <div class="mt-1.5 text-xs text-[#B12704] space-y-0.5">
+            @if (registerForm.get('email')?.getError('required')) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Email address is required.</p>
+            }
+            @if (registerForm.get('email')?.getError('email')) {
+              <p>
+                <i class="fa-solid fa-circle-exclamation mr-1"></i> Please enter a valid email
+                address.
+              </p>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label class="block text-xs font-semibold text-amazon-text mb-1.5">Password</label>
+        <div class="relative">
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-amazon-text-secondary pointer-events-none"
+          >
+            <i class="fa-solid fa-lock text-xs"></i>
+          </span>
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="Enter password"
+            [ngClass]="{
+              'border-red-600 focus:ring-red-500/20':
+                registerForm.get('password')?.errors && registerForm.get('password')?.touched,
+            }"
+            class="w-full pl-10 pr-4 py-2.5 bg-white border border-amazon-gray-border rounded-xl text-amazon-text placeholder-gray-400 text-sm focus:outline-none focus:border-amazon-orange focus:ring-2 focus:ring-amazon-orange/20 transition-all duration-200"
+          />
+        </div>
+
+        <!-- Password Error Messages (@if) -->
+        @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
+          <div class="mt-1.5 text-xs text-[#B12704] space-y-0.5">
+            @if (registerForm.get('password')?.getError('required')) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Password is required.</p>
+            }
+            @if (registerForm.get('password')?.getError('pattern')) {
+              <p>
+                <i class="fa-solid fa-circle-exclamation mr-1"></i> Password must start with an
+                uppercase letter and be at least 8 characters.
+              </p>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Re-Password -->
+      <div>
+        <label class="block text-xs font-semibold text-amazon-text mb-1.5">Confirm Password</label>
+        <div class="relative">
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-amazon-text-secondary pointer-events-none"
+          >
+            <i class="fa-solid fa-lock text-xs"></i>
+          </span>
+          <input
+            type="password"
+            formControlName="rePassword"
+            placeholder="Confirm password"
+            [ngClass]="{
+              'border-red-600 focus:ring-red-500/20':
+                (registerForm.get('rePassword')?.errors || registerForm.getError('mismatch')) &&
+                registerForm.get('rePassword')?.touched,
+            }"
+            class="w-full pl-10 pr-4 py-2.5 bg-white border border-amazon-gray-border rounded-xl text-amazon-text placeholder-gray-400 text-sm focus:outline-none focus:border-amazon-orange focus:ring-2 focus:ring-amazon-orange/20 transition-all duration-200"
+          />
+        </div>
+
+        <!-- Re-Password Error Messages (@if) -->
+        @if (
+          registerForm.get('rePassword')?.touched &&
+          (registerForm.get('rePassword')?.errors || registerForm.getError('mismatch'))
+        ) {
+          <div class="mt-1.5 text-xs text-[#B12704] space-y-0.5">
+            @if (registerForm.get('rePassword')?.getError('required')) {
+              <p>
+                <i class="fa-solid fa-circle-exclamation mr-1"></i> Confirm Password is required.
+              </p>
+            }
+            @if (
+              registerForm.getError('mismatch') &&
+              !registerForm.get('rePassword')?.getError('required')
+            ) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Passwords do not match.</p>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label class="block text-xs font-semibold text-amazon-text mb-1.5">Phone Number</label>
+        <div class="relative">
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-amazon-text-secondary pointer-events-none"
+          >
+            <i class="fa-solid fa-phone text-xs"></i>
+          </span>
+          <input
+            type="tel"
+            formControlName="phone"
+            placeholder="01012345678"
+            [ngClass]="{
+              'border-red-600 focus:ring-red-500/20':
+                registerForm.get('phone')?.errors && registerForm.get('phone')?.touched,
+            }"
+            class="w-full pl-10 pr-4 py-2.5 bg-white border border-amazon-gray-border rounded-xl text-amazon-text placeholder-gray-400 text-sm focus:outline-none focus:border-amazon-orange focus:ring-2 focus:ring-amazon-orange/20 transition-all duration-200"
+          />
+        </div>
+
+        <!-- Phone Error Messages (@if) -->
+        @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched) {
+          <div class="mt-1.5 text-xs text-[#B12704] space-y-0.5">
+            @if (registerForm.get('phone')?.getError('required')) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Phone number is required.</p>
+            }
+            @if (registerForm.get('phone')?.getError('pattern')) {
+              <p>
+                <i class="fa-solid fa-circle-exclamation mr-1"></i> Enter a valid Egyptian phone
+                number (e.g. 010, 011, 012, 015).
+              </p>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid"
+        [ngClass]="{ 'opacity-50 cursor-not-allowed': registerForm.invalid }"
+        class="w-full py-3 px-4 bg-amazon-orange hover:bg-amazon-orange-hover text-amazon-text font-bold rounded-xl shadow-sm hover:shadow-md transition-all duration-200 text-sm mt-3 cursor-pointer border border-amazon-orange-dark/30"
+      >
+        Create Account
+        @if (isLoading) {
+          <span><i class="fas fa-spin fa-spinner mr-2"></i></span>
+        }
+      </button>
+ <!-- Success Message Alert -->
+@if (isSuccess) {
+  <div class="mb-4 p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs rounded-xl flex items-center space-x-2 transition-all duration-200 shadow-sm">
+    <i class="fa-solid fa-circle-check text-base text-emerald-600"></i>
+    <span class="font-medium">Account Created Successfully! Redirecting to login...</span>
+  </div>
+}
+
+<!-- Error Message Alert -->
+@if (msgError) {
+  <div class="mb-4 p-3.5 bg-red-50 border border-red-200 text-[#B12704] text-xs rounded-xl flex items-center space-x-2 transition-all duration-200 shadow-sm">
+    <i class="fa-solid fa-circle-exclamation text-base text-red-600"></i>
+    <span class="font-medium">{{ msgError }}</span>
+  </div>
+}
+    </form>
+
+    <!-- Footer -->
+    <div class="text-center mt-6 pt-2 border-t border-amazon-gray">
+      <p class="text-xs  text-amazon-text-secondary">
+        Already have an account?
+        <a
+          routerLink="/login"
+          class="text-amazon-link hover:text-amazon-link-hover font-semibold hover:underline"
+          >Sign in</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

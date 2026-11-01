@@ -1,0 +1,111 @@
+<div class="min-h-screen flex items-center justify-center py-12 px-4 bg-amazon-gray-light">
+  <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-md border border-amazon-gray-border">
+    
+    <!-- Header -->
+    <div class="mb-6 text-center sm:text-left">
+      <h2 class="text-2xl font-bold text-amazon-text">Sign-In</h2>
+      <p class="text-sm text-amazon-text-secondary mt-1">Welcome back! Please enter your details.</p>
+    </div>
+
+    <!-- Success Message Alert -->
+    @if (isSuccess) {
+      <div class="mb-4 p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs rounded-xl flex items-center space-x-2 transition-all duration-200 shadow-sm">
+        <i class="fa-solid fa-circle-check text-base text-emerald-600"></i>
+        <span class="font-medium">{{ isSuccess }} Redirecting...</span>
+      </div>
+    }
+
+    <!-- Error Message Alert -->
+    @if (msgError) {
+      <div class="mb-4 p-3.5 bg-red-50 border border-red-200 text-[#B12704] text-xs rounded-xl flex items-center space-x-2 transition-all duration-200 shadow-sm">
+        <i class="fa-solid fa-circle-exclamation text-base text-red-600"></i>
+        <span class="font-medium">{{ msgError }}</span>
+      </div>
+    }
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogginForm()" class="space-y-4">
+      
+      <!-- Email -->
+      <div>
+        <label class="block text-xs font-semibold text-amazon-text mb-1.5">Email Address</label>
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-amazon-text-secondary pointer-events-none">
+            <i class="fa-solid fa-envelope text-xs"></i>
+          </span>
+          <input type="email" formControlName="email" placeholder="Enter your email"
+                 [ngClass]="{'border-red-600 focus:ring-red-500/20': loginForm.get('email')?.errors && loginForm.get('email')?.touched}"
+                 class="w-full pl-10 pr-4 py-2.5 bg-white border border-amazon-gray-border rounded-xl text-amazon-text placeholder-gray-400 text-sm focus:outline-none focus:border-amazon-orange focus:ring-2 focus:ring-amazon-orange/20 transition-all duration-200">
+        </div>
+
+        <!-- Email Error Messages -->
+        @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched) {
+          <div class="mt-1.5 text-xs text-[#B12704] space-y-0.5">
+            @if (loginForm.get('email')?.getError('required')) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Email address is required.</p>
+            }
+            @if (loginForm.get('email')?.getError('email')) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Please enter a valid email address.</p>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Password -->
+      <div>
+        <!-- تم إضافة Flex هنا ليكون الـ Label في اليمين ورابط نسيت كلمة المرور في اليسار -->
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-xs font-semibold text-amazon-text">Password</label>
+          <a routerLink="/forget-password" class="text-xs font-medium text-amazon-link hover:text-amazon-link-hover hover:underline transition-colors">
+            Forgot password?
+          </a>
+        </div> 
+
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-amazon-text-secondary pointer-events-none">
+            <i class="fa-solid fa-lock text-xs"></i>
+          </span>
+          <input type="password" formControlName="password" placeholder="Enter password"
+                 [ngClass]="{'border-red-600 focus:ring-red-500/20': loginForm.get('password')?.errors && loginForm.get('password')?.touched}"
+                 class="w-full pl-10 pr-4 py-2.5 bg-white border border-amazon-gray-border rounded-xl text-amazon-text placeholder-gray-400 text-sm focus:outline-none focus:border-amazon-orange focus:ring-2 focus:ring-amazon-orange/20 transition-all duration-200">
+        </div>
+
+        <!-- Password Error Messages -->
+        @if (loginForm.get('password')?.errors && loginForm.get('password')?.touched) {
+          <div class="mt-1.5 text-xs text-[#B12704] space-y-0.5">
+            @if (loginForm.get('password')?.getError('required')) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Password is required.</p>
+            }
+            @if (loginForm.get('password')?.getError('pattern')) {
+              <p><i class="fa-solid fa-circle-exclamation mr-1"></i> Password must start with an uppercase letter and be at least 8 characters.</p>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" 
+              [disabled]="loginForm.invalid || isLoading"
+              [ngClass]="{'opacity-50 cursor-not-allowed': loginForm.invalid || isLoading}"
+              class="w-full py-3 px-4 bg-amazon-orange hover:bg-amazon-orange-hover text-amazon-text font-bold rounded-xl shadow-sm hover:shadow-md transition-all duration-200 text-sm mt-3 cursor-pointer border border-amazon-orange-dark/30 flex items-center justify-center space-x-2">
+        
+        @if (isLoading) {
+          <span><i class="fas fa-spin fa-spinner mr-2"></i></span>
+          <span>Signing in...</span>
+        } @else {
+          <span>Sign In</span>
+        }
+      </button>
+
+    </form>
+
+    <!-- Footer -->
+    <div class="text-center mt-6 pt-2 border-t border-amazon-gray">
+      <p class="text-xs text-amazon-text-secondary">
+        Don't have an account? 
+        <a routerLink="/register" class="text-amazon-link hover:text-amazon-link-hover font-semibold hover:underline">Create your account</a>
+      </p>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,121 @@
+@let cart = cartDetails();
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+  <!-- عنوان الصفحة -->
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 flex items-center gap-3">
+      <span class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shadow-sm">
+        <i class="fa-solid fa-cart-shopping text-lg"></i>
+      </span>
+      Shopping Cart
+    </h1>
+
+    <!-- زر مسح السلة بالكامل -->
+    @if (cart && cart.data?.products?.length) {
+      <button 
+        (click)="clearUserCart()" 
+        class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95"
+      >
+        <i class="fa-solid fa-trash-can text-sm"></i>
+        <span>Clear Cart</span>
+      </button>
+    }
+  </div>
+
+  <!-- التحقق من وجود منتجات -->
+  @if (cart && cart.data?.products?.length) {
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+      <!-- قائمة المنتجات -->
+      <div class="lg:col-span-2 space-y-4">
+        @for (item of cart.data.products; track item._id) {
+          <div class="bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm hover:shadow-md transition-all">
+
+            <!-- صورة المنتج وتفاصيله -->
+            <div class="flex items-center gap-4 w-full sm:w-auto">
+              <img [src]="item.product.imageCover" [alt]="item.product.title" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl border border-gray-100 flex-shrink-0 bg-gray-50">
+              <div class="space-y-1">
+                <span class="text-[11px] uppercase tracking-wider font-bold px-2 py-0.5 bg-amber-50 text-amber-700 rounded-md inline-block">
+                  {{ item.product.category?.name }}
+                </span>
+                <h3 class="text-sm sm:text-base font-bold text-gray-800 line-clamp-1">{{ item.product.title }}</h3>
+                <span class="text-base font-extrabold text-gray-900 block pt-1">{{ item.price }} EGP</span>
+              </div>
+            </div>
+
+            <!-- أزرار التحكم في الكمية والحذف -->
+            <div class="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6 pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100">
+
+              <!-- عداد الكمية -->
+              <div class="flex items-center border border-gray-300 rounded-xl overflow-hidden bg-gray-50 shadow-inner">
+                <button (click)="updateCount(item.product._id, item.count - 1)" class="px-3 py-2 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer active:scale-95">
+                  <i class="fa-solid fa-minus text-xs"></i>
+                </button>
+                <span class="px-3 text-sm font-bold text-gray-800 min-w-[2rem] text-center">{{ item.count }}</span>
+                <button (click)="updateCount(item.product._id, item.count + 1)" class="px-3 py-2 text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer active:scale-95">
+                  <i class="fa-solid fa-plus text-xs"></i>
+                </button>
+              </div>
+
+              <!-- زر الحذف -->
+              <button (click)="removeItem(item.product._id)" class="text-red-500 hover:text-red-700 text-xs font-semibold flex items-center gap-1.5 cursor-pointer transition-colors p-2 rounded-lg hover:bg-red-50">
+                <i class="fa-solid fa-trash text-sm"></i>
+                <span class="hidden sm:inline">Remove</span>
+              </button>
+
+            </div>
+
+          </div>
+        }
+      </div>
+
+      <!-- ملخص الطلب -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-5 sticky top-24">
+        <h2 class="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3 flex items-center justify-between">
+          <span>Order Summary</span>
+          <i class="fa-solid fa-receipt text-amber-500"></i>
+        </h2>
+
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between text-gray-600">
+            <span>Total Items</span>
+            <span class="font-bold text-gray-900">{{ cart.numOfCartItems }} Items</span>
+          </div>
+
+          <div class="flex justify-between text-gray-600">
+            <span>Shipping</span>
+            <span class="font-bold text-emerald-600">Free</span>
+          </div>
+        </div>
+
+        <div class="flex justify-between text-base font-extrabold text-gray-900 border-t border-gray-100 pt-4">
+          <span>Total Price</span>
+          <span class="text-amber-600 text-lg">{{ cart.data.totalCartPrice }} EGP</span>
+        </div>
+
+        <!-- زر الذهاب للدفع مع تمرير الـ cartId كـ Query Parameter -->
+        <button 
+          [routerLink]="['/checkOut']" 
+          [queryParams]="{ cartId: cart.cartId }"
+          class="w-full py-3.5 bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold rounded-xl shadow-md text-xs cursor-pointer transition-all uppercase tracking-wider flex items-center justify-center gap-2 active:scale-[0.98]">
+          <i class="fa-solid fa-lock text-xs"></i>
+          Proceed to Checkout
+        </button>
+      </div>
+
+    </div>
+  } @else {
+    <!-- السلة الفارغة -->
+    <div class="text-center py-20 px-4 bg-white border border-gray-200 rounded-2xl shadow-sm max-w-2xl mx-auto my-12">
+      <div class="w-20 h-20 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-5 text-3xl shadow-inner">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+      <h2 class="text-xl font-extrabold text-gray-900">Your Cart is Empty</h2>
+      <p class="text-sm text-gray-500 mt-1 mb-8 max-w-md mx-auto">Looks like you haven't added anything to your cart yet.</p>
+      <a routerLink="/home" class="inline-flex items-center gap-2 px-8 py-3 bg-amber-500 hover:bg-amber-600 text-gray-900 text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer">
+        Start Shopping
+      </a>
+    </div>
+  }
+</div>
