@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:myAmzoon": "node dist/myAmzoon/server/server.mjs"
+    "serve:ssr:myAmzoon": "node dist/myAmzoon/server/server.mjs",
+    "deploy": "ng build --base-href /my-store/ && angular-cli-ghpages --dir dist/myAmzoon"
   },
   "private": true,
   "packageManager": "npm@12.2.1",
