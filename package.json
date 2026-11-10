@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:myAmzoon": "node dist/myAmzoon/server/server.mjs",
-    "deploy": "ng build --base-href /my-store/ && angular-cli-ghpages --dir dist/myAmzoon"
+    "deploy": "ng build --base-href /my-store/ && npx angular-cli-ghpages --dir=dist/myAmzoon/browser"
   },
   "private": true,
   "packageManager": "npm@12.2.1",
@@ -43,6 +43,7 @@
     "@tailwindcss/postcss": "^4.3.3",
     "@types/express": "^5.0.1",
     "@types/node": "^22.12.0",
+    "angular-cli-ghpages": "^3.1.2",
     "autoprefixer": "^10.6.1",
     "jsdom": "^30.0.0",
     "postcss": "^8.5.31",
