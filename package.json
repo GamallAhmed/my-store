@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:myAmzoon": "node dist/myAmzoon/server/server.mjs",
-"deploy": "ng build --base-href /my-store/ && cp dist/myAmzoon/browser/index.html dist/myAmzoon/browser/404.html && npx angular-cli-ghpages --dir=dist/myAmzoon/browser"  },
+    "deploy": "ng build --base-href /my-store/ && node -e \"const fs = require('fs'); fs.copyFileSync('dist/myAmzoon/browser/index.html', 'dist/myAmzoon/browser/404.html');\" && npx angular-cli-ghpages --dir=dist/myAmzoon/browser"
+  },
   "private": true,
   "packageManager": "npm@12.2.1",
   "dependencies": {
