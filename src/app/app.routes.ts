@@ -3,7 +3,7 @@ import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { BlankLayout } from './layouts/blank-layout/blank-layout';
 import { authGuardGuard } from './core/guards/auth-guard-guard';
 import { userLoggedGuardGuard } from './core/guards/user-logged-guard-guard';
-
+import { RenderMode, ServerRoute } from '@angular/ssr';
 export const routes: Routes = [
     // Default Route
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -87,4 +87,10 @@ export const routes: Routes = [
             } 
         ] 
     }
+];
+export const serverRoutes: ServerRoute[] = [
+  {
+    path: '**',
+    renderMode: RenderMode.Client
+  }
 ];
